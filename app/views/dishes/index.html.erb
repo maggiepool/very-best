@@ -102,26 +102,11 @@
         </td>
         
         <td>
-          
-        <% if dish.bookmark.present? %>
-            <a href="/bookmarks/<%= bookmark.venue.id %>">
-              <%= bookmark.venue.name %>
-            </a>
-        <% else %>
-          <form action="/create_bookmark" method="post">
+          <div class="form-group">
   
-            <div class="form-group">
-  
-              <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :name, @dish.try(:venue_id)), :class => "form-control") %>
+            <%= select_tag("venue_id", options_from_collection_for_select(Venue.all, :id, :name, @dish.try(:venue_id)), :class => "form-control") %>
       
-            </div>
-  
-            <button class="btn btn-primary">
-              Bookmark
-            </button>
-          </form>   
-        <% end %>
-          
+          </div>
         </td>
         
         <td>
