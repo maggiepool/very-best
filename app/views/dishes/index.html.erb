@@ -15,7 +15,7 @@
 
         <div class="form-group">
       <%= f.label :cuisine_name_cont, "Cuisine name contains" %>
-      <%= select_tag("cuisine_name_cont", options_from_collection_for_select(Cuisine.all, :id, :cuisine_name_cont, @dishes.try(:cuisine_id)), :class => "form-control") %>
+      <%= select_tag("cuisine_name_cont", options_from_collection_for_select(Cuisine.all, :id, :name, @dishes.try(:cuisine_id)), :class => "form-control") %>
 
     </div>
 
