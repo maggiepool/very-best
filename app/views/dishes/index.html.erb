@@ -102,6 +102,12 @@
         </td>
         
         <td>
+          
+        <% if dish.bookmark.present? %>
+            <a href="/bookmarks/<%= bookmark.venue.id %>">
+              <%= bookmark.venue.name %>
+            </a>
+        <% else %>
           <form action="/create_bookmark" method="post">
   
             <div class="form-group">
@@ -113,7 +119,8 @@
             <button class="btn btn-primary">
               Bookmark
             </button>
-          </form>          
+          </form>   
+        <% end %>
           
         </td>
         
