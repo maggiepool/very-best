@@ -42,24 +42,22 @@
         Bookmarks
       </li>
 
-      <% @dish.bookmarks.each do |bookmark| %>
-        <li class="list-group-item">
-          <a href="/bookmarks/<%= bookmark.id %>">
-            <%= bookmark.notes %>
-          </a>
-          <div class="btn-group btn-group-xs float-right">
-            <a href="/bookmarks/<%= bookmark.id %>" class="btn btn-primary">
-              <i class="fa fa-search-plus"></i>
-            </a>
-            <a href="/bookmarks/<%= bookmark.id %>/edit" class="btn btn-warning">
-              <i class="fa fa-edit"></i>
-            </a>
-            <a href="/delete_bookmark/<%= bookmark.id %>" class="btn btn-danger" rel="nofollow">
-              <i class="fa fa-trash-o"></i>
-            </a>
+  <div class="card-header">
+      You Loved the <%= @dish.name %> at...
+    </div>
+    <ul class="list-group list-group-flush">
+    <li class="list-group-item"><div class="row m-b-2">
+  </div></li>
+    <% Bookmark.where(dish_id: @dish, user_id: current_user.id).each do |bookmark| %>
+    <li class="list-group-item">
+      <a href="/venues/<%= bookmark.venue_id %>"><%= Venue.find(bookmark.venue_id).name %></a>
+    </li>
+    </ul>
+    <% end %>
+
           </div>
         </li>
-      <% end %>
+    
 
       <li class="list-group-item">
         <form action="/create_bookmark" method="post">
